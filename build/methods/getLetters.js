@@ -18,7 +18,12 @@ async function getLetters({ token }) {
     const config = (0, generateStandartConfig_1.default)({ token, data });
     const res = await axios_1.default.request(config);
     const resData = res.data;
-    return resData.results[0].data.map(e => { return { title: e.title, createdAt: e.createdAt, id: e.id, read: e.studentStatuses[0].readTimestamp }; });
+    try {
+        return resData.results[0].data.map(e => { return { title: e.title, createdAt: e.createdAt, id: e.id, read: e.studentStatuses[0].readTimestamp }; });
+    }
+    catch (error) {
+        return `There was an error, fetching the data. Is your Token correct?`;
+    }
 }
 exports.default = getLetters;
 //# sourceMappingURL=getLetters.js.map

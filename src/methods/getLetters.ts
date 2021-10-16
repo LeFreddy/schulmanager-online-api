@@ -19,6 +19,14 @@ export default async function getLetters({ token }: { token: string }) {
 	const res = await axios.request<LettersResponse>(config)
 	const resData = res.data
 
-	return resData.results[0].data.map(e => { return { title: e.title, createdAt: e.createdAt, id: e.id, read: e.studentStatuses[0].readTimestamp } })
+	try {
+
+		return resData.results[0].data.map(e => { return { title: e.title, createdAt: e.createdAt, id: e.id, read: e.studentStatuses[0].readTimestamp } })
+
+	} catch (error) {
+
+		return `There was an error, fetching the data. Is your Token correct?`
+
+	}
 
 }

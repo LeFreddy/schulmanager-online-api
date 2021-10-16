@@ -20,6 +20,6 @@ export declare class SchulmanagerAPI {
         createdAt: Date;
         id: number;
         read: Date;
-    }[]>;
+    }[] | "There was an error, fetching the data. Is your Token correct?">;
 }
 //# sourceMappingURL=main.d.ts.map
